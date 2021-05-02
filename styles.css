@@ -1,0 +1,191 @@
+@charset "UTF-8";
+
+/********************************* General **********************************/
+:root {
+  margin: 0;
+  padding: 0;
+
+  font-family: Nunito, sans-serif;
+
+  color: var(--text-color);
+  background-color: var(--background-color);
+
+  --content-width: 80ch;
+
+  /******************************* Variables ********************************/
+
+  --text-color: #1F1F1F;
+  --background-color: #F7F7F7;
+
+  --primary-color: hsl(214, 82%, 50%);
+  --primary-contrast-color: white;
+  --secondary-color: hsl(0, 0%, 50%);
+  --secondary-contrast-color: white;
+  --error-color: hsl(0, 66.6%, 50%);
+  --error-contrast-color: white;
+
+  --box-shadow-subtle: 1px 0 4px 1px rgb(0 0 0 / 10%);
+  --box-shadow-obvious: 1px 0 16px 2px rgb(0 0 0 / 37%);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Roboto, sans-serif;
+  font-weight: 700;
+}
+
+/***************************** Specific styles ******************************/
+
+/********************************* masthead *********************************/
+.masthead {
+  width: var(--content-width);
+  margin: auto;
+}
+
+.masthead__title {
+  font-size: 4rem;
+  text-align: center;
+}
+
+/*********************************** form ***********************************/
+.form {
+  max-width: var(--content-width);
+  margin-inline: auto;
+}
+
+/******************************** search bar ********************************/
+.search-bar {
+  display: flex;
+  flex-direction: row;
+
+  font-size: 2rem;
+
+  margin-block-end: 1rem;
+}
+
+.search-bar__input,
+.search-bar__button {
+  color: #121212;
+  background-color: #FFF;
+
+  padding-block: .25rem;
+  border-radius: 4px;
+  border: 1px solid #CCC;
+
+  font-size: inherit;
+}
+
+.search-bar__input {
+  flex: 1;
+
+  padding-inline-start: .25em;
+  padding-inline-end: 0;
+  border-inline-end: 0;
+
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+}
+
+.search-bar__button {
+  color: #ccc;
+
+  cursor: pointer;
+
+  aspect-ratio: 1 / 1;
+
+  padding-inline-start: .5rem;
+  border-inline-start: 0;
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+
+  transition: background-color 0.125s;
+}
+
+.search-bar:focus-within .search-bar__button {
+  background-color: var(--secondary-color);
+  color: var(--secondary-contrast-color);
+}
+.search-bar .search-bar__button:hover,
+.search-bar .search-bar__button:active,
+.search-bar .search-bar__button:focus {
+  background-color: var(--primary-color);
+  color: var(--primary-constrast-color);
+}
+
+.search-bar__input:invalid + .search-bar__button {
+  cursor: not-allowed;
+}
+
+.search-bar__input:invalid + .search-bar__button:hover,
+.search-bar__input:invalid + .search-bar__button:focus {
+  background-color: var(--error-color);
+  color: var(--error-constrast-color);
+}
+
+.advanced-search {
+  border: 0;
+  background-color: #ddd;
+
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+
+/******************************** Utilities *********************************/
+
+.clickable {
+  cursor: pointer;
+}
+
+/**************** Show a shadow when the element is focused *****************/
+.shadow-on-focus {
+  transition: box-shadow .1s;
+  box-shadow: var(--box-shadow-subtle);
+}
+
+.shadow-on-focus:focus-within {
+  box-shadow: var(--box-shadow-obvious);
+}
+
+/******* Highlight the background colour when the element is hovered ********/
+.highlight-on-hover {
+  transition: color background-color 0.125s;
+}
+
+.highlight-on-hover:hover,
+.highlight-on-hover:focus,
+.highlight-on-hover:focus-within {
+  color: #111;
+  background-color: rgb(50% 50% 50% / 25%);
+}
+
+/********************** slide open the details element **********************/
+.details .details__showable {
+  transform-origin: top center;
+  transition: all .25s ease-in-out;
+
+  /* Defaults assume the <details> element is closed */
+  opacity: 0%;
+  transform: scaleY(0);
+}
+
+.details[open] .details__showable {
+  opacity: 100%;
+  transform: scaleY(1);
+}
+
+/**
+ * Stolen from Bootstrap:
+ * https://getbootstrap.com/docs/4.0/utilities/screenreaders/
+ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
