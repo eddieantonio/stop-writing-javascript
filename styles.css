@@ -10,7 +10,7 @@
   color: var(--text-color);
   background-color: var(--background-color);
 
-  --content-width: 80ch;
+  --content-width: clamp(40ch, 80ch, 80vw);
 
   /******************************* Variables ********************************/
 
