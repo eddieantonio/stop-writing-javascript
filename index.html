@@ -26,6 +26,10 @@
   flex-direction: row;
 }
 .split__pane { flex: 1 }
+.inline { list-style: none }
+.inline > li {
+  display: inline-block; margin-inline: 1em;
+}
     </style>
   </head>
   <body>
@@ -35,14 +39,15 @@
           <header>
             <h1> Stop Writing JavaScript! </h1>
             <p class="subtitle"> Or; how to use plain <strong>HTML</strong> and
-            <strong>CSS</strong> to impress your friends and
-            vanquish your enemies </p>
+            <strong>CSS</strong> to impress your friends and vanquish your enemies! </p>
           </header>
 
           <p> Eddie Antonio Santos </p>
           <small>
-            <a href="https://eddieantonio.ca/" class="lowercase">EddieAntonio.ca</a>
-            <a href="https://twitter.com/_eddieantonio" class="lowercase">@_EddieAntonio</a>
+            <ul class="inline contact-links">
+              <li> <span aria-hidden=true">🔗</span> <a href="https://eddieantonio.ca/" class="lowercase">EddieAntonio.ca</a>
+              <li> <span aria-hidden=true">🐦</span> <a href="https://twitter.com/_eddieantonio" class="lowercase">@_EddieAntonio</a>
+            </ul>
           </small>
         </section>
 
@@ -59,9 +64,8 @@
           <h2> What is this talk about? </h2>
           <ul>
             <li class="fragment"> Create a simple webpage…
-              <li class="fragment"> …with <strong>zero</strong> JavaScript!
-                <li class="fragment"> Compare misuse of JS with
-                  <strong>HTML/CSS alternative</strong>
+            <li class="fragment"> …with <strong>zero</strong> JavaScript!
+            <li class="fragment"> Compare misuse of JS with <strong>HTML/CSS alternative</strong>
           </ul>
         </section>
 
@@ -80,15 +84,139 @@
           <h2> Why use HTML/CSS instead of JavaScript? </h2>
           <ul>
             <li class="fragment"> <strong>less</strong> error-prone
-              <li class="fragment"> (usually) more <strong>accessible</strong>
-                <li class="fragment"> additional JavaScript becomes <strong>simpler</strong>
+            <li class="fragment"> (usually) more <strong>accessible</strong>
+            <li class="fragment"> additional JavaScript becomes <strong>simpler</strong>
+            <li class="fragment"> <a href="https://v8.dev/blog/cost-of-javascript-2019">less JavaScript === better performance</a> </li>
           </ul>
         </section>
 
         <section>
           <h2> Let's get started! </h2>
-          <!-- TODO: party gif -->
         </section>
+
+        <section>
+          <h2> Let's make a search field! </h2>
+          <ul>
+            <li class="fragment"> …that submits when I click the search button </li>
+            <li class="fragment"> …that submits when I press enter </li>
+            <li class="fragment"> …that disallows an empty input </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Making a search field</h2>
+
+          <p> Basic markup: </p>
+
+          <pre><code class="html" data-trim  data-line-numbers="1-4|3">
+            <div class="search-bar">
+              <input id="search" name="q">
+              <a href="#" onclick="doSearch('/search')">Search</a>
+            </div>
+          </code></pre>
+
+          <p class="fragment"> How to <strong>submit</strong> without JavaScript? </p>
+        </section>
+
+        <section>
+          <p>Use <strong><code>&lt;form&gt;</code></strong> and <strong><code>&lt;button&gt;</code></strong> elements! </p>
+
+          <pre><code class="html" data-trim>
+            <form class="search-bar" action="/search">
+              <input name="q" type="search">
+              <button type="submit">Search!</button>
+            </form>
+          </code></pre>
+
+          <p class="fragment"> Will do a <code>GET</code> request to <code>/search?q=user+input</code> </p>
+          <p class="fragment"> <strong><code>&lt;button type="submit"&gt;</code></strong> is all that's need to submit a form on click on enter! </p>
+        </section>
+
+        <section>
+          <p> Do not submit if empty </p>
+
+          <pre><code class="html" data-trim data-line-numbers="1-4|2" data-noescape>
+            &lt;form class=&quot;search-bar&quot; action=&quot;/search&quot;&gt;
+              &lt;input name=&quot;search&quot; type=&quot;search&quot; required&gt;
+              &lt;button type=&quot;submit&quot;&gt;Search!&lt;/button&gt;
+            &lt;/form&gt;
+          </code></pre>
+
+          <p> add the <strong><code>required</code></strong> attribute to the input! </p>
+          <p class="fragment"> Check MDN for <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes">a list of validation</a>! </p>
+          <p class="fragment"> Sets the <code>:valid</code> and <code>:invalid</code> CSS pseudo-classes </p>
+          <p class="fragment"> <strong>Always sanitize+validate on the backend!</strong> </p>
+        </section>
+
+        <section>
+          <h2> Let's add some advanced options </h2>
+
+          <ul>
+            <li class="fragment"> …that are initially hidden
+            <li class="fragment"> …that the user can choose to open
+            <li class="fragment"> …that has a nice transition
+          </ul>
+        </section>
+
+        <section>
+          <p> Basic markup </p>
+
+          <pre><code class="html" data-trim>
+            <a href="#" id="open-advanced-options"> Advanced Options </a>
+            <div id="advanced-options" style="display:none">…</div>
+          </code></pre>
+
+          <pre><code class="js" data-trim>
+            $("#open-advanced-options").click((event) =&gt; {
+              event.preventDefault();
+              $("#advanced-options").show();
+            })
+          </code></pre>
+
+          <p>(there are many ways to do this)</p>
+        </section>
+
+        <section>
+          <p> Builtin HTML tags to do this! </p>
+          <p>
+            <strong><code>&lt;details&gt;</code></strong>
+            and
+            <strong><code>&lt;summary&gt;</code></strong>
+          </p>
+
+          <pre><code class="html" data-trim>
+            <details>
+              <summary> Advanced options </summary>
+              (advanced options go here…)
+            </details>
+          </code></pre>
+        </section>
+
+        <section>
+          <p>
+            <code>&lt;details&gt;</code>
+            has <strong><code>open</code></strong>
+            attribute that you can use in <strong>CSS</strong> and
+            <strong>JavaScript</strong>!
+          </p>
+
+          <pre><code class="css" data-trim>
+            details &gt; .content {
+              opacity: 0;
+              /* fade in when open: */
+              transition: opacity .25s;
+            }
+
+            details[open] &gt; .content {
+              opacity: 1;
+            }
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Takeaways</h2>
+        </section>
+
         <section>
           <h2> Buttons and forms </h2>
           <div class="split">
@@ -121,7 +249,7 @@
 
             <div class="split__pane fragment">
               <h3> consider: </h3>
-              <p> use <strong>CSS psuedo-classes</strong>
+              <p> use <strong>CSS pseudo-classes</strong>
               <ul>
                 <li><code>:hover</code></li>
                 <li><code>:focus</code></li>
@@ -150,6 +278,17 @@
               </code></pre>
             </div>
           </div>
+        </section>
+
+        <section>
+          <h2 class="r-fit-text"> Ask me questions! </h2>
+
+          <small>
+            <ul class="inline contact-links">
+              <li> <span aria-hidden=true">🔗</span> <a href="https://eddieantonio.ca/" class="lowercase">EddieAntonio.ca</a>
+              <li> <span aria-hidden=true">🐦</span> <a href="https://twitter.com/_eddieantonio" class="lowercase">@_EddieAntonio</a>
+            </ul>
+          </small>
         </section>
       </div>
     </div>
