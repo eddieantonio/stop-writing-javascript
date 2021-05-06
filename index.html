@@ -21,6 +21,13 @@
 			text-decoration-skip-ink: none;
 		}
 		.twitter-tweet { margin-inline: auto; }
+		.split {
+			display: flex;
+			flex-direction: row;
+		}
+		.split__pane {
+			flex: 1;
+		}
 		</style>
 	</head>
 	<body>
@@ -62,6 +69,17 @@
 				</section>
 
 				<section>
+					<p> We will be creating <a href="./search.html">this app</a>: </p>
+					<iframe
+						title="SearchIt! example app"
+						width="768"
+						height="480"
+						src="./search.html"
+						></iframe>
+					<p> with <strong>zero</strong> JavaScript</p>
+				</section>
+
+				<section>
 					<h2> Why use HTML/CSS instead of JavaScript? </h2>
 					<ul>
 						<li class="fragment"> <strong>less</strong> error-prone
@@ -74,20 +92,67 @@
 					<h2> Let's get started! </h2>
 					<!-- TODO: party gif -->
 				</section>
-
 				<section>
-					<p> We will be creating <a href="./search.html">this app</a>: </p>
-					<iframe
-						title="SearchIt! example app"
-						width="768"
-						height="480"
-						src="./search.html"
-						></iframe>
-					<p> with <strong>zero</strong> JavaScript</p>
+					<h2> Buttons and forms </h2>
+					<div class="split">
+						<div class="split__pane fragment">
+							<h3> Instead of… </h3>
+							<p>registering a <code>click</code> event handler
+							for <code>&lt;a&nbsp;href="#"&gt;</code>
+						</div>
+
+						<div class="split__pane fragment">
+							<h3> consider: </h3>
+							<pre><code data-trim>
+								&lt;form action=&quot;/search&quot;&gt;
+								  &lt;button type=&quot;submit&quot;&gt;
+								      Search!
+								  &lt;/button&gt;
+								&lt;/form&gt;
+							</code></pre>
+						</div>
+					</div>
 				</section>
 
 				<section>
-					<!-- TODO: introduce forms and buttons -->
+					<h2> Hover and status effects </h2>
+					<div class="split">
+						<div class="split__pane fragment">
+							<h3> Instead of… </h3>
+							<p>registering a <code>mouseenter</code>, <code>mouseleave</code>, etc. event handlers
+						</div>
+
+						<div class="split__pane fragment">
+							<h3> consider: </h3>
+							<p> use <strong>CSS psuedo-classes</strong>
+							<ul>
+								<li><code>:hover</code></li>
+								<li><code>:focus</code></li>
+								<li><code>:focus-within</code></li>
+							</code></pre>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h2> Accordion/Disclosure widget </h2>
+					<div class="split">
+						<div class="split__pane">
+							<h3> Instead of… </h3>
+							<p> Using JavaScript to show/hide
+								content </p>
+						</div>
+
+						<div class="split__pane">
+							<h3> consider: </h3>
+							<pre><code data-trim>
+								<dialog>
+								  <summary>Title</summary>
+								  <p> (content goes here) </p>
+								</dialog>
+							</code></pre>
+						</div>
+					</div>
 				</section>
 			</div>
 		</div>
