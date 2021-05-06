@@ -1,176 +1,173 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Stop Writing JavaScript! Using plain HTML & CSS to impress your friends and vanquish your enemies</title>
+    <title>Stop Writing JavaScript! Using plain HTML & CSS to impress your friends and vanquish your enemies</title>
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/simple.css" id="theme">
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/simple.css" id="theme">
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
-		<style>
-		.lowercase { text-transform: lowercase}
-		.slides strong {
-			text-decoration: underline solid pink;
-			text-decoration-thickness: 50%;
-			text-underline-offset: -30%;
-			text-decoration-skip-ink: none;
-		}
-		.twitter-tweet { margin-inline: auto; }
-		.split {
-			display: flex;
-			flex-direction: row;
-		}
-		.split__pane {
-			flex: 1;
-		}
-		</style>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>
-					<header>
-						<h1> Stop Writing JavaScript! </h1>
-						<p class="subtitle"> Or; how to use plain <strong>HTML</strong> and
-							<strong>CSS</strong> to impress your friends and
-							vanquish your enemies </p>
-					</header>
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+    <style>
+.lowercase { text-transform: lowercase }
+.slides strong {
+  text-decoration: underline solid pink;
+  text-decoration-thickness: 50%;
+  text-underline-offset: -30%;
+  text-decoration-skip-ink: none;
+}
+.twitter-tweet { margin-inline: auto }
+.split {
+  display: flex;
+  flex-direction: row;
+}
+.split__pane { flex: 1 }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <header>
+            <h1> Stop Writing JavaScript! </h1>
+            <p class="subtitle"> Or; how to use plain <strong>HTML</strong> and
+            <strong>CSS</strong> to impress your friends and
+            vanquish your enemies </p>
+          </header>
 
-					<p> Eddie Antonio Santos </p>
-					<small>
-						<a href="https://eddieantonio.ca/" class="lowercase">EddieAntonio.ca</a>
-						<a href="https://twitter.com/_eddieantonio" class="lowercase">@_EddieAntonio</a>
-					</small>
-				</section>
+          <p> Eddie Antonio Santos </p>
+          <small>
+            <a href="https://eddieantonio.ca/" class="lowercase">EddieAntonio.ca</a>
+            <a href="https://twitter.com/_eddieantonio" class="lowercase">@_EddieAntonio</a>
+          </small>
+        </section>
 
-				<section>
-					<h2> JavaScript is <strong>misused</strong> on the web</h2>
-					<!-- TODO: gif: about using the wrong tool  -->
-				</section>
+        <section>
+          <h2> JavaScript is <strong>misused</strong> on the web</h2>
+        </section>
 
-				<section>
-					<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Web standards nerds!<br><br>What are some examples of web content / user interface patterns that you&#39;ve seen implemented with JavaScript, when they could have been done more simply &amp; accessibly with HTML + CSS?<br><br>Asking for an <a href="https://twitter.com/_eddieantonio?ref_src=twsrc%5Etfw">@_EddieAntonio</a>, who&#39;s working on a talk.</p>&mdash; Amelia Bellamy-Royds (@AmeliasBrain) <a href="https://twitter.com/AmeliasBrain/status/1384990157774884868?ref_src=twsrc%5Etfw">April 21, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-					<small> Thanks, <a href="https://twitter.com/AmeliasBrain">Amelia</a>! </small>
-				</section>
+        <section>
+          <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Web standards nerds!<br><br>What are some examples of web content / user interface patterns that you&#39;ve seen implemented with JavaScript, when they could have been done more simply &amp; accessibly with HTML + CSS?<br><br>Asking for an <a href="https://twitter.com/_eddieantonio?ref_src=twsrc%5Etfw">@_EddieAntonio</a>, who&#39;s working on a talk.</p>&mdash; Amelia Bellamy-Royds (@AmeliasBrain) <a href="https://twitter.com/AmeliasBrain/status/1384990157774884868?ref_src=twsrc%5Etfw">April 21, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <small> Thanks, <a href="https://twitter.com/AmeliasBrain">Amelia</a>! </small>
+        </section>
 
-				<section>
-					<h2> What is this talk about? </h2>
-					<ul>
-						<li class="fragment"> Create a simple webpage…
-						<li class="fragment"> …with <strong>zero</strong> JavaScript!
-						<li class="fragment"> Compare misuse of JS with
-							<strong>HTML/CSS alternative</strong>
-					</ul>
-				</section>
+        <section>
+          <h2> What is this talk about? </h2>
+          <ul>
+            <li class="fragment"> Create a simple webpage…
+              <li class="fragment"> …with <strong>zero</strong> JavaScript!
+                <li class="fragment"> Compare misuse of JS with
+                  <strong>HTML/CSS alternative</strong>
+          </ul>
+        </section>
 
-				<section>
-					<p> We will be creating <a href="./search.html">this app</a>: </p>
-					<iframe
-						title="SearchIt! example app"
-						width="768"
-						height="480"
-						src="./search.html"
-						></iframe>
-					<p> with <strong>zero</strong> JavaScript</p>
-				</section>
+        <section>
+          <p> We will be creating <a href="./search.html">this app</a>: </p>
+          <iframe
+            title="SearchIt! example app"
+            width="768"
+            height="480"
+            src="./search.html"
+            ></iframe>
+          <p> with <strong>zero</strong> JavaScript</p>
+        </section>
 
-				<section>
-					<h2> Why use HTML/CSS instead of JavaScript? </h2>
-					<ul>
-						<li class="fragment"> <strong>less</strong> error-prone
-						<li class="fragment"> (usually) more <strong>accessible</strong>
-						<li class="fragment"> additional JavaScript becomes <strong>simpler</strong>
-					</ul>
-				</section>
+        <section>
+          <h2> Why use HTML/CSS instead of JavaScript? </h2>
+          <ul>
+            <li class="fragment"> <strong>less</strong> error-prone
+              <li class="fragment"> (usually) more <strong>accessible</strong>
+                <li class="fragment"> additional JavaScript becomes <strong>simpler</strong>
+          </ul>
+        </section>
 
-				<section>
-					<h2> Let's get started! </h2>
-					<!-- TODO: party gif -->
-				</section>
-				<section>
-					<h2> Buttons and forms </h2>
-					<div class="split">
-						<div class="split__pane fragment">
-							<h3> Instead of… </h3>
-							<p>registering a <code>click</code> event handler
-							for <code>&lt;a&nbsp;href="#"&gt;</code>
-						</div>
+        <section>
+          <h2> Let's get started! </h2>
+          <!-- TODO: party gif -->
+        </section>
+        <section>
+          <h2> Buttons and forms </h2>
+          <div class="split">
+            <div class="split__pane fragment">
+              <h3> Instead of… </h3>
+              <p>registering a <code>click</code> event handler
+              for <code>&lt;a&nbsp;href="#"&gt;</code>
+            </div>
 
-						<div class="split__pane fragment">
-							<h3> consider: </h3>
-							<pre><code data-trim>
-								&lt;form action=&quot;/search&quot;&gt;
-								  &lt;button type=&quot;submit&quot;&gt;
-								      Search!
-								  &lt;/button&gt;
-								&lt;/form&gt;
-							</code></pre>
-						</div>
-					</div>
-				</section>
+            <div class="split__pane fragment">
+              <h3> consider: </h3>
+              <pre><code data-trim>
+                &lt;form action=&quot;/search&quot;&gt;
+                  &lt;button type=&quot;submit&quot;&gt;
+                      Search!
+                  &lt;/button&gt;
+                &lt;/form&gt;
+              </code></pre>
+            </div>
+          </div>
+        </section>
 
-				<section>
-					<h2> Hover and status effects </h2>
-					<div class="split">
-						<div class="split__pane fragment">
-							<h3> Instead of… </h3>
-							<p>registering a <code>mouseenter</code>, <code>mouseleave</code>, etc. event handlers
-						</div>
+        <section>
+          <h2> Hover and status effects </h2>
+          <div class="split">
+            <div class="split__pane fragment">
+              <h3> Instead of… </h3>
+              <p>registering a <code>mouseenter</code>, <code>mouseleave</code>, etc. event handlers
+            </div>
 
-						<div class="split__pane fragment">
-							<h3> consider: </h3>
-							<p> use <strong>CSS psuedo-classes</strong>
-							<ul>
-								<li><code>:hover</code></li>
-								<li><code>:focus</code></li>
-								<li><code>:focus-within</code></li>
-							</code></pre>
-						</div>
-					</div>
-				</section>
+            <div class="split__pane fragment">
+              <h3> consider: </h3>
+              <p> use <strong>CSS psuedo-classes</strong>
+              <ul>
+                <li><code>:hover</code></li>
+                <li><code>:focus</code></li>
+                <li><code>:focus-within</code></li>
+                </code></pre>
+            </div>
+          </div>
+        </section>
 
-				<section>
-					<h2> Accordion/Disclosure widget </h2>
-					<div class="split">
-						<div class="split__pane">
-							<h3> Instead of… </h3>
-							<p> Using JavaScript to show/hide
-								content </p>
-						</div>
+        <section>
+          <h2> Accordion/Disclosure widget </h2>
+          <div class="split">
+            <div class="split__pane">
+              <h3> Instead of… </h3>
+              <p> Using JavaScript to show/hide
+              content </p>
+            </div>
 
-						<div class="split__pane">
-							<h3> consider: </h3>
-							<pre><code data-trim>
-								<dialog>
-								  <summary>Title</summary>
-								  <p> (content goes here) </p>
-								</dialog>
-							</code></pre>
-						</div>
-					</div>
-				</section>
-			</div>
-		</div>
+            <div class="split__pane">
+              <h3> consider: </h3>
+              <pre><code data-trim>
+                <dialog>
+                  <summary>Title</summary>
+                  <p> (content goes here) </p>
+                </dialog>
+              </code></pre>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+              hash: true,
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+              // Learn about plugins: https://revealjs.com/plugins/
+              plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+            });
+    </script>
+  </body>
 </html>
