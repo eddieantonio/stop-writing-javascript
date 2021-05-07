@@ -144,8 +144,88 @@
 
           <p> add the <strong><code>required</code></strong> attribute to the input! </p>
           <p class="fragment"> Check MDN for <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes">a list of validation</a>! </p>
-          <p class="fragment"> Sets the <code>:valid</code> and <code>:invalid</code> CSS pseudo-classes </p>
           <p class="fragment"> <strong>Always sanitize+validate on the backend!</strong> </p>
+        </section>
+
+
+        <section>
+          <h2> Let's style the submit button! </h2>
+
+          <ul>
+            <li class="fragment"> …when the input is focused
+            <li class="fragment"> …let it be red when the input is empty
+            <li class="fragment"> …let it be okay when the input is valid
+          </ul>
+        </section>
+
+        <section>
+          <p> Basic markup </p>
+
+          <pre><code class="html" data-trim data-noescape>
+            &lt;form class=&quot;search-bar&quot; action=&quot;/search&quot;&gt;
+              &lt;input id="search" name=&quot;search&quot; type=&quot;search&quot; required&gt;
+              &lt;button id="button" type=&quot;submit&quot;&gt;Search!&lt;/button&gt;
+            &lt;/form&gt;
+          </code></pre>
+
+          <pre><code data-trim data-line-numbers="1-6|1,4|2,5">
+            $("#search").on("mouseenter", () =&gt; {
+              $("#button").css("background-color", "blue")
+            })
+            $("#search").on("mouseleave", () =&gt; {
+              $("#button").css("background-color", "white")
+            })
+          </code></pre>
+
+          <p>(there are many ways to do this)</p>
+        </section>
+
+
+        <section>
+          <p> CSS <strong>pseudo-classes</strong> to the rescue! </p>
+
+          <small>(examples over simplified for demonstration)</small>
+
+          <pre><code class="html" data-trim data-noescape>
+            &lt;form class=&quot;search-bar&quot; action=&quot;/search&quot;&gt;
+              &lt;input name=&quot;search&quot; type=&quot;search&quot; required&gt;
+              &lt;button type=&quot;submit&quot;&gt;Search!&lt;/button&gt;
+            &lt;/form&gt;
+          </code></pre>
+
+          <pre><code data-trim data-line-numbers="1-8|1,4-6">
+            .search-bar:focus-within button[type=submit] {
+              background-color: grey;
+            }
+            .search-bar button:hover,
+            .search-bar button:active,
+            .search-bar button:focus {
+              background-color: blue;
+            }
+          </code></pre>
+        </section>
+
+        <section>
+          <p> Combine with <strong>sibling selectors</strong> to style invalid inputs! </p>
+
+          <small>(examples over simplified for demonstration)</small>
+
+          <pre><code class="html" data-trim data-noescape data-line-numbers="2">
+            &lt;form class=&quot;search-bar&quot; action=&quot;/search&quot;&gt;
+              &lt;input name=&quot;search&quot; type=&quot;search&quot; required&gt;
+              &lt;button type=&quot;submit&quot;&gt;Search!&lt;/button&gt;
+            &lt;/form&gt;
+          </code></pre>
+
+          <pre><code data-trim data-line-numbers="1-7|1,4,5|1,2">
+            input[type=search]:invalid + button[type=submit] {
+              cursor: not-allowed;
+            }
+            input[type=search]:invalid + button[type=submit]:hover,
+            input[type=search]:invalid + button[type=submit]:focus {
+              background-color: red;
+            }
+          </code></pre>
         </section>
 
         <section>
@@ -214,6 +294,19 @@
         </section>
 
         <section>
+          <h2> Complete example </h2>
+          <p> <a href="https://github.com/eddieantonio/stop-writing-javascript/blob/gh-pages/search.html">Source code available on my GitHub!</a> </p>
+          <iframe
+            title="SearchIt! example app"
+            width="768"
+            height="480"
+            src="./search.html"
+            ></iframe>
+          <p> with <strong>zero</strong> JavaScript</p>
+        </section>
+
+
+        <section>
           <h2>Takeaways</h2>
         </section>
 
@@ -268,7 +361,7 @@
               content </p>
             </div>
 
-            <div class="split__pane">
+            <div class="split__pane fragment">
               <h3> consider: </h3>
               <pre><code data-trim>
                 <dialog>
